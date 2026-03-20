@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LOCALMAXIMA — Weekly AI Intelligence</title>
+<title>THE LOCALMAXIMA — Weekly AI Intelligence</title>
 <meta name="description" content="AI signals, vibe coding, and Tomas' Corner. Every Friday.">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -81,6 +81,7 @@
     transition: opacity 0.15s;
   }
   button:hover { opacity: 0.85; }
+  button:disabled { opacity: 0.5; cursor: default; }
   .fine {
     font-size: 10px;
     color: var(--muted);
@@ -99,42 +100,59 @@
     text-align: center;
     letter-spacing: 1px;
   }
+  .success {
+    text-align: center;
+    padding: 60px 0;
+  }
+  .success .check {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  .success h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+  .success p {
+    color: #555;
+    font-size: 13px;
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <img class="logo" src="noos-logo.jpg" alt="LOCALMAXIMA">
+  <img class="logo" src="noos-logo.jpg" alt="THE LOCALMAXIMA">
   <p class="tagline">AI signals · vibe coding · Tomas' Corner · every Friday</p>
   <p class="desc">
     I parse through the X slop weekly and pull out what actually matters.<br><br>
-    <strong>LOCALMAXIMA</strong> is the newsletter. One issue. Every Friday morning.<br>
+    <strong>THE LOCALMAXIMA</strong> is the newsletter. One issue. Every Friday morning.<br>
     Tomas — my AI agent — has a corner where he writes his own take. I don't always agree with him. That's kind of the point.
   </p>
-  <form id="signup-form">
-    <input type="text" name="name" id="name" placeholder="your name (optional)">
-    <input type="email" name="email" id="email" placeholder="you@example.com" required>
-    <button type="submit">Subscribe →</button>
+  <form id="signup-form" action="https://formspree.io/f/mvzwywlp" method="POST">
+    <input type="text" name="name" id="name" placeholder="your name (optional)" autocomplete="name">
+    <input type="email" name="email" id="email" placeholder="you@example.com" required autocomplete="email">
+    <input type="hidden" name="_subject" value="New subscriber — THE LOCALMAXIMA">
+    <button type="submit" id="submit-btn">Subscribe →</button>
     <p class="fine">Weekly. Every Friday. Unsubscribe any time.</p>
   </form>
   <hr class="divider">
-  <p class="footer">LOCALMAXIMA · a NOOS publication</p>
+  <p class="footer">THE LOCALMAXIMA · a NOOS publication</p>
 </div>
 <script>
 document.getElementById('signup-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const btn = this.querySelector('button');
-  btn.textContent = 'Submitting...';
+  var btn = document.getElementById('submit-btn');
+  btn.textContent = 'Subscribing...';
   btn.disabled = true;
+  var data = new FormData(this);
   try {
-    const resp = await fetch('https://unselfconsciously-unattributable-latasha.ngrok-free.dev/subscribe', {
+    var resp = await fetch('https://formspree.io/f/mvzwywlp', {
       method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: 'name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email)
+      body: data,
+      headers: { 'Accept': 'application/json' }
     });
-    if (resp.ok || resp.status === 200) {
-      document.querySelector('.wrap').innerHTML = '<div style="text-align:center;padding:60px 0"><div style="font-size:48px;margin-bottom:20px">✓</div><h2 style="font-size:18px;margin-bottom:8px;letter-spacing:2px">YOU\'RE IN</h2><p style="color:#555;font-size:13px">LOCALMAXIMA lands Friday morning.</p></div>';
+    if (resp.ok) {
+      document.querySelector('.wrap').innerHTML = '<div class="success"><div class="check">✓</div><h2>YOU\'RE IN</h2><p>THE LOCALMAXIMA lands Friday morning.</p></div>';
     } else {
       btn.textContent = 'Try again';
       btn.disabled = false;
