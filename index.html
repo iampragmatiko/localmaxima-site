@@ -60,9 +60,7 @@
   .page { position: relative; z-index: 1; }
   .shell { width: min(calc(100% - 42px), var(--max)); margin: 0 auto; }
   .nav { position: sticky; top: 0; z-index: 20; background: rgba(216,213,204,.9); backdrop-filter: blur(14px); border-bottom: 2px solid var(--line); }
-  .nav-inner { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-  .brand { display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 12px; letter-spacing: .13em; text-transform: uppercase; font-weight: 800; }
-  .brand img { width: 30px; height: 30px; border: 2px solid var(--line); object-fit: cover; filter: grayscale(1) contrast(1.15); background: var(--paper); }
+  .nav-inner { height: 72px; display: flex; align-items: center; justify-content: flex-end; gap: 24px; }
   .nav-links { display: flex; align-items: center; gap: 18px; font-family: var(--mono); font-size: 11px; letter-spacing: .09em; text-transform: uppercase; font-weight: 700; }
   .nav-links a { border-bottom: 2px solid transparent; }
   .nav-links a:hover { border-color: var(--line); }
@@ -140,10 +138,6 @@
 <div class="page">
   <nav class="nav" aria-label="Primary navigation">
     <div class="shell nav-inner">
-      <a class="brand" href="#top" aria-label="Local Maxima home">
-        <img src="noos-logo.jpg" alt="">
-        <span>Local Maxima</span>
-      </a>
       <div class="nav-links">
         <a href="projects.html">Projects</a>
         <a href="#experiments">Experiments</a>
