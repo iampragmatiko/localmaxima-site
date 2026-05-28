@@ -117,20 +117,20 @@
     <section class="hero" aria-labelledby="hero-title">
       <div>
         <div class="eyebrow">Public lab / build receipts / artifact first</div>
-        <h1 id="hero-title">Projects we built with AI.</h1>
-        <p class="hero-copy">A live archive of AI-built pages, prototypes, agents, interfaces, and useful weird machines — each with <a href="#format">why we built them</a>, what happened, and proof that the thing exists outside the fog machine.</p>
+        <h1 id="hero-title">Projects built with AI.</h1>
+        <p class="hero-copy">A simple archive of pages, prototypes, agents, and tools. Each project says <a href="#format">why it exists</a>, how it was made, what changed, and where to see it.</p>
         <div class="actions">
-          <a class="button primary" href="#projects">View projects</a>
-          <a class="button" href="#subscribe">Get build notes</a>
+          <a class="button primary" href="#projects">See projects</a>
+          <a class="button" href="#subscribe">Get updates</a>
         </div>
       </div>
       <aside class="receipt-preview" aria-label="Receipt format preview">
         <div class="eyebrow">Receipt format</div>
-        <h2>Every artifact has to show its work.</h2>
+        <h2>The page has to answer four questions.</h2>
         <div class="receipt-grid">
-          <div><span class="label">Why</span>What was the hypothesis? What itch was loud enough to deserve a build?</div>
-          <div><span class="label">Process</span>Which tools, agents, prompts, constraints, and wrong turns shaped it?</div>
-          <div><span class="label">Proof</span>Screenshot, demo, live URL, or trace. Claims without artifacts are decorative fog.</div>
+          <div><span class="label">Why</span>Why did I make this?</div>
+          <div><span class="label">Process</span>How did I make it?</div>
+          <div><span class="label">Proof</span>Where can you see proof?</div>
         </div>
       </aside>
     </section>
@@ -139,9 +139,9 @@
       <div class="section-head">
         <div>
           <div class="eyebrow">Project archive</div>
-          <h2 id="projects-title">Every project gets the same receipt.</h2>
+          <h2 id="projects-title">Same format every time.</h2>
         </div>
-        <p class="section-note">Not case studies wearing cologne. Receipts: the reason, the messy middle, the proof, and the pattern worth stealing.</p>
+        <p class="section-note">No case study voice. Each project gets the reason, the process, the proof, and the useful lesson.</p>
       </div>
       <div class="projects">
         <article class="card">
@@ -149,12 +149,12 @@
           <div>
             <div class="tag">Live site</div>
             <h3>Local Maxima landing page</h3>
-            <p>A public lab homepage for Andrea's AI-native experiments: agentic tech, build notes, demos, and field notes from idea to artifact.</p>
+            <p>The homepage for this lab: what I am building, what I am learning, and where the receipts live.</p>
           </div>
           <div class="stage-list">
-            <div class="stage"><strong>Idea</strong>A newsletter could become a lab, not just an inbox rectangle with aspirations.</div>
-            <div class="stage"><strong>Proto</strong>Turn the thesis into a single brutal interface: identity, method, signal, subscription.</div>
-            <div class="stage"><strong>Build</strong>Static HTML, Formspree signup, GitHub Pages, real domain, screenshot proof.</div>
+            <div class="stage"><strong>Idea</strong>The newsletter needed a real home.</div>
+            <div class="stage"><strong>Proto</strong>Make the premise obvious fast: who, what, why, subscribe.</div>
+            <div class="stage"><strong>Build</strong>Static HTML. Formspree. GitHub Pages. Real domain.</div>
           </div>
           <div class="proof">
             <img src="assets/local-maxima-home-proof.png" alt="Screenshot of the Local Maxima landing page">
@@ -166,16 +166,16 @@
           <div class="num">02</div>
           <div>
             <div class="tag">In progress</div>
-            <h3>Idea → Artifact Agent</h3>
-            <p>A voice-note-to-project machine that captures a messy idea, lets agents decompose it, and ships a small artifact with receipts.</p>
+            <h3>Idea to artifact agent</h3>
+            <p>A tool that turns a voice note into a project plan, build, critique, and receipt.</p>
           </div>
           <div class="stage-list">
-            <div class="stage"><strong>Idea</strong>Most ideas die in the handoff from voice note to runnable plan.</div>
-            <div class="stage"><strong>Proto</strong>Planner, builder, critic, and receipt generator with explicit interfaces.</div>
-            <div class="stage"><strong>Build</strong>Follow the build notes as the pipeline becomes less ceremonial and more load-bearing.</div>
+            <div class="stage"><strong>Idea</strong>Voice notes are easy. Turning them into work is the hard part.</div>
+            <div class="stage"><strong>Proto</strong>Planner. Builder. Critic. Receipt writer.</div>
+            <div class="stage"><strong>Build</strong>I am building the pipeline now.</div>
           </div>
           <div class="proof">
-            <div style="display:grid;place-items:center;min-height:150px;border:1px dashed rgba(255,248,231,.45);font-family:var(--mono);font-size:12px;text-align:center;padding:18px;">TRACE PENDING<br>GOOD. MAKE IT REAL.</div>
+            <div style="display:grid;place-items:center;min-height:150px;border:1px dashed rgba(255,248,231,.45);font-family:var(--mono);font-size:12px;text-align:center;padding:18px;">TRACE PENDING<br>MAKE IT REAL.</div>
             <a class="button" href="#subscribe">Follow build notes</a>
           </div>
         </article>
@@ -186,15 +186,15 @@
       <div class="section-head">
         <div>
           <div class="eyebrow">Project template</div>
-          <h2 id="template-title">The format stays simple.</h2>
+          <h2 id="template-title">The format is simple.</h2>
         </div>
-        <p class="section-note">If the page cannot explain the project in four blocks, the project is probably still a fog machine with bullet points.</p>
+        <p class="section-note">If I cannot explain it in four blocks, it is not clear enough yet.</p>
       </div>
       <div id="format" class="template-grid">
-        <article class="template-card"><span class="label">01 / Why</span><h3>State the itch.</h3><p>What problem, aesthetic, or future-interface suspicion made the build necessary?</p></article>
-        <article class="template-card"><span class="label">02 / Process</span><h3>Show the mechanism.</h3><p>Tools, agents, prompts, assets, constraints, and the parts that behaved badly.</p></article>
-        <article class="template-card"><span class="label">03 / Learned</span><h3>Extract the pattern.</h3><p>What got sharper after the artifact existed? What would we steal next time?</p></article>
-        <article class="template-card"><span class="label">04 / Proof</span><h3>Attach receipts.</h3><p>Screenshot, demo link, trace, commit, video, or artifact. The work becomes the proof.</p></article>
+        <article class="template-card"><span class="label">01 / Why</span><h3>Why</h3><p>Why did this need to exist?</p></article>
+        <article class="template-card"><span class="label">02 / Process</span><h3>How</h3><p>Tools, agents, prompts, assets, constraints.</p></article>
+        <article class="template-card"><span class="label">03 / Learned</span><h3>What changed</h3><p>What did I learn after making it?</p></article>
+        <article class="template-card"><span class="label">04 / Proof</span><h3>Proof</h3><p>Screenshot, demo, trace, commit, video, or live URL.</p></article>
       </div>
     </section>
 
@@ -202,8 +202,8 @@
       <div class="subscribe">
         <div>
           <div class="eyebrow">Weekly dispatch</div>
-          <h2 id="subscribe-title">Get useful build notes.</h2>
-          <p class="section-note">Projects, demos, receipts, and field notes from the agentic frontier. No ceremonial thought leadership. The bar is underground, but we are not.</p>
+          <h2 id="subscribe-title">Get the notes.</h2>
+          <p class="section-note">New builds, useful failures, screenshots, demos, and notes on what I am learning.</p>
         </div>
         <form id="signup-form" action="https://formspree.io/f/mvzwywlp" method="POST">
           <div class="form-row">
@@ -212,7 +212,7 @@
             <input type="hidden" name="_subject" value="New subscriber — Local Maxima Projects">
             <button type="submit" id="submit-btn">Subscribe</button>
           </div>
-          <p class="fine">Weekly-ish. Reality has scheduling opinions.</p>
+          <p class="fine">Occasional. Useful. Easy to leave.</p>
         </form>
       </div>
     </section>
@@ -220,7 +220,7 @@
 
   <footer class="shell footer">
     <span>LOCAL MAXIMA / PROJECT RECEIPTS</span>
-    <span>by <a href="https://x.com/pragmatikoo">@pragmatikoo</a> · pages, prototypes, agents, and useful weirdness</span>
+    <span>by <a href="https://x.com/pragmatikoo">@pragmatikoo</a> · pages, prototypes, agents, notes</span>
   </footer>
 </div>
 <script>
@@ -234,7 +234,7 @@ if (form) {
     var data = new FormData(this);
     try {
       var resp = await fetch('https://formspree.io/f/mvzwywlp', { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-      if (resp.ok) form.innerHTML = '<div><h3>You are in.</h3><p>Build receipts incoming. Small systems, actual proof.</p></div>';
+      if (resp.ok) form.innerHTML = '<div><h3>You are in.</h3><p>You are in. I will send new builds when there is something worth sending.</p></div>';
       else { btn.textContent = 'Try again'; btn.disabled = false; }
     } catch(err) { btn.textContent = 'Subscribe'; btn.disabled = false; }
   });
