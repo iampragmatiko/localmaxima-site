@@ -3,165 +3,568 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>THE LOCALMAXIMA — Weekly AI Intelligence</title>
-<meta name="description" content="AI signals, vibe coding, and Tomas' Corner. Every Friday.">
+<title>Local Maxima — AI-native experiments from idea to artifact</title>
+<meta name="description" content="Local Maxima is Andrea's public lab for agentic technology: AI-native experiments, build notes, videos, and field notes from idea to artifact.">
+<meta property="og:title" content="Local Maxima — From idea to artifact">
+<meta property="og:description" content="AI-native experiments, build notes, videos, and field reports from Andrea, an agentic technologist.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#050505">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; }
   :root {
-    --bg: #0a0a0a;
-    --text: #e0e0e0;
-    --muted: #555;
-    --accent: #e0e0e0;
-    --border: #1e1e1e;
+    --bg: #050505;
+    --bg-raised: #0a0a0a;
+    --surface: #101010;
+    --surface-raised: #171717;
+    --surface-peak: #202514;
+    --text: #ededed;
+    --muted: #a3a3a3;
+    --dim: #787878;
+    --border: #262626;
+    --border-subtle: #181818;
+    --accent: #b8ff5c;
+    --cyan: #6ee7f9;
+    --amber: #f5c15c;
+    --danger: #ff6b6b;
+    --max: 1180px;
+    --radius: 12px;
+    --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'Geist Mono', 'SF Mono', Consolas, monospace;
   }
+  html { scroll-behavior: smooth; width: 100%; max-width: 100%; overflow-x: hidden; }
+  img { max-width: 100%; }
+  .shell, .hero > *, .panel, .card, .subscribe, .trace-line, .trace-value { min-width: 0; }
   body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'SF Mono', 'Space Mono', 'Courier New', monospace;
+    margin: 0;
     min-height: 100vh;
+    background:
+      radial-gradient(circle at 78% 8%, rgba(184, 255, 92, 0.12), transparent 30rem),
+      radial-gradient(circle at 16% 28%, rgba(110, 231, 249, 0.08), transparent 24rem),
+      var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.34;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+      repeating-radial-gradient(circle at 75% 20%, transparent 0 32px, rgba(184,255,92,0.035) 33px 34px);
+    background-size: 48px 48px, 48px 48px, 100% 100%;
+    mask-image: linear-gradient(to bottom, #000 0%, transparent 84%);
+  }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--accent); }
+  .page { position: relative; z-index: 1; }
+  .shell { width: min(calc(100% - 48px), var(--max)); margin: 0 auto; }
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    background: rgba(5,5,5,0.72);
+    backdrop-filter: blur(16px);
+  }
+  .nav-inner {
+    width: min(calc(100% - 48px), var(--max));
+    height: 72px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 24px;
+    justify-content: space-between;
+    gap: 24px;
   }
-  .wrap {
-    max-width: 520px;
-    width: 100%;
-  }
-  .logo {
-    width: 100%;
-    max-width: 480px;
-    display: block;
-    margin: 0 auto 40px;
-    border-radius: 4px;
-  }
-  .tagline {
-    font-size: 11px;
-    letter-spacing: 3px;
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 32px;
-    text-align: center;
-  }
-  .desc {
-    font-size: 13px;
-    line-height: 1.8;
-    color: #aaa;
-    margin-bottom: 40px;
-    border-left: 2px solid var(--border);
-    padding-left: 16px;
-  }
-  .desc strong { color: var(--text); }
-  form { display: flex; flex-direction: column; gap: 12px; }
-  input {
-    background: #111;
-    border: 1px solid var(--border);
     color: var(--text);
-    font-family: inherit;
-    font-size: 13px;
-    padding: 12px 16px;
-    border-radius: 2px;
-    outline: none;
-    transition: border-color 0.15s;
+    white-space: nowrap;
   }
-  input:focus { border-color: #444; }
-  input::placeholder { color: var(--muted); }
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.05);
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .nav-links a:last-child {
+    color: var(--bg);
+    background: var(--text);
+    padding: 9px 12px;
+    border-radius: 999px;
+  }
+  .hero {
+    min-height: calc(100vh - 72px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
+    gap: 40px;
+    align-items: center;
+    padding: 66px 0 56px;
+  }
+  .eyebrow, .section-label, .chip, .meta, .kicker {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 11px;
+  }
+  .eyebrow { color: var(--accent); margin-bottom: 18px; }
+  h1 {
+    margin: 0;
+    max-width: 840px;
+    font-size: clamp(56px, 10vw, 124px);
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+    font-weight: 800;
+  }
+  .hero-copy {
+    max-width: 650px;
+    margin: 28px 0 0;
+    color: #c9c9c9;
+    font-size: clamp(18px, 2vw, 23px);
+    line-height: 1.55;
+    letter-spacing: -0.025em;
+  }
+  .hero-copy strong { color: var(--text); font-weight: 650; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 18px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: transform 150ms ease, background 150ms ease, border-color 150ms ease, color 150ms ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .btn.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .btn.secondary { background: rgba(255,255,255,0.03); color: var(--text); }
+  .panel {
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(23,23,23,0.78), rgba(10,10,10,0.88));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 24px 80px rgba(0,0,0,0.36);
+    overflow: hidden;
+  }
+  .console-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+  .status { display: inline-flex; align-items: center; gap: 8px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 18px rgba(184,255,92,0.7); }
+  .console-body { padding: 20px; display: grid; gap: 14px; }
+  .trace-line {
+    display: grid;
+    grid-template-columns: 86px 1fr;
+    gap: 16px;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.025);
+  }
+  .trace-key { color: var(--dim); font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.09em; }
+  .trace-value { color: #d7d7d7; font-size: 14px; }
+  .meter {
+    height: 9px;
+    border-radius: 999px;
+    background: #181818;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .meter span { display: block; width: 74%; height: 100%; background: linear-gradient(90deg, var(--accent), var(--cyan)); }
+  section { padding: 62px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: end;
+    margin-bottom: 28px;
+  }
+  .section-label { color: var(--accent); margin-bottom: 10px; }
+  h2 {
+    margin: 0;
+    max-width: 720px;
+    font-size: clamp(34px, 5vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+  .section-note { max-width: 380px; color: var(--muted); font-size: 15px; }
+  .grid { display: grid; gap: 16px; }
+  .grid.three { grid-template-columns: repeat(3, 1fr); }
+  .grid.two { grid-template-columns: 1.1fr 0.9fr; }
+  .card {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    background: rgba(16,16,16,0.78);
+    padding: 24px;
+    min-height: 188px;
+  }
+  .card.feature {
+    min-height: 330px;
+    background:
+      radial-gradient(circle at 90% 0%, rgba(184,255,92,0.11), transparent 22rem),
+      rgba(16,16,16,0.82);
+  }
+  .chip { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); margin-bottom: 28px; }
+  .chip::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .card h3 { margin: 0 0 14px; font-size: 24px; line-height: 1.1; letter-spacing: -0.035em; }
+  .card p { margin: 0; color: #b8b8b8; font-size: 15px; }
+  .card .meta { color: var(--dim); margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .receipt {
+    display: grid;
+    gap: 10px;
+    margin-top: 26px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #bdbdbd;
+  }
+  .receipt div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .receipt span:first-child { color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; }
+  .signals { display: grid; gap: 12px; }
+  .signal {
+    display: grid;
+    grid-template-columns: 124px 1fr;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .signal time { color: var(--dim); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .signal strong { display: block; margin-bottom: 5px; font-size: 18px; letter-spacing: -0.02em; }
+  .signal p { margin: 0; color: var(--muted); }
+  .subscribe {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 28px;
+    align-items: center;
+    padding: 34px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.09);
+    background:
+      radial-gradient(circle at 0% 0%, rgba(184,255,92,0.10), transparent 22rem),
+      var(--surface);
+  }
+  .subscribe h2 { font-size: clamp(32px, 4vw, 56px); }
+  form { display: grid; gap: 12px; }
+  .form-row { display: grid; grid-template-columns: minmax(130px, 0.8fr) minmax(240px, 1.4fr) auto; gap: 10px; }
+  input {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid var(--border);
+    background: var(--bg-raised);
+    color: var(--text);
+    border-radius: 8px;
+    padding: 0 14px;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    outline: none;
+  }
+  input:focus { border-color: rgba(184,255,92,0.78); box-shadow: 0 0 0 3px rgba(184,255,92,0.11); }
+  input::placeholder { color: var(--dim); }
   button {
+    min-height: 48px;
+    border: 0;
+    border-radius: 999px;
+    padding: 0 18px;
     background: var(--text);
     color: var(--bg);
-    border: none;
-    font-family: inherit;
-    font-size: 11px;
+    font-family: var(--font-mono);
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 14px;
     cursor: pointer;
-    border-radius: 2px;
-    transition: opacity 0.15s;
   }
-  button:hover { opacity: 0.85; }
+  button:hover { background: var(--accent); }
   button:disabled { opacity: 0.5; cursor: default; }
-  .fine {
-    font-size: 10px;
-    color: var(--muted);
-    text-align: center;
-    margin-top: 4px;
-    letter-spacing: 0.5px;
-  }
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 40px 0;
-  }
+  .fine { margin: 0; color: var(--dim); font-family: var(--font-mono); font-size: 11px; }
   .footer {
-    font-size: 10px;
-    color: var(--muted);
-    text-align: center;
-    letter-spacing: 1px;
+    padding: 40px 0;
+    color: var(--dim);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    border-top: 1px solid rgba(255,255,255,0.06);
   }
   .success {
-    text-align: center;
-    padding: 60px 0;
+    padding: 24px;
+    border: 1px solid rgba(184,255,92,0.28);
+    border-radius: 12px;
+    background: rgba(184,255,92,0.06);
   }
-  .success .check {
-    font-size: 48px;
-    margin-bottom: 20px;
+  .success h3 { margin: 0 0 6px; color: var(--accent); letter-spacing: -0.03em; }
+  .success p { margin: 0; color: #c9c9c9; }
+  @media (max-width: 900px) {
+    .shell, .nav-inner { width: auto; margin-left: 16px; margin-right: 16px; }
+    .hero, .grid.two, .subscribe { grid-template-columns: 1fr; }
+    .hero { padding-top: 48px; }
+    .grid.three { grid-template-columns: 1fr; }
+    .nav-links a:not(:last-child) { display: none; }
+    .section-head { display: block; }
+    .section-note { margin-top: 14px; }
+    .form-row { grid-template-columns: 1fr; }
   }
-  .success h2 {
-    font-size: 18px;
-    margin-bottom: 8px;
-    letter-spacing: 2px;
+  @media (max-width: 560px) {
+    .nav-inner { height: 64px; }
+    .nav-links { margin-left: auto; }
+    .brand span { display: none; }
+    .hero { min-height: auto; }
+    section { overflow: hidden; }
+    h1 { font-size: clamp(48px, 14vw, 64px); letter-spacing: -0.055em; }
+    .hero-copy { max-width: 100%; font-size: 17px; overflow-wrap: anywhere; }
+    .panel { width: 100%; max-width: 100%; }
+    .hero-actions { display: grid; grid-template-columns: 1fr; }
+    .btn { width: 100%; }
+    .console-body { padding: 18px; }
+    .trace-line, .signal { grid-template-columns: 1fr; gap: 8px; }
+    .trace-value { overflow-wrap: anywhere; }
+    .subscribe { padding: 22px; }
+    .footer { flex-direction: column; }
   }
-  .success p {
-    color: #555;
-    font-size: 13px;
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
   }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <img class="logo" src="noos-logo.jpg" alt="THE LOCALMAXIMA by Tomas">
-  <p class="tagline">AI &bull; AGENTS &bull; TECH NEWS</p>
-  <p class="desc">
-    <strong>THE LOCALMAXIMA</strong> lands every Friday.<br><br>
-    Andrea parses through X slop so you don't have to. Only the highest signal moments from the week make it through. Tomas, her AI agent, has a corner where he writes his own take. She doesn't always agree with him. That's kind of the point.<br><br>
-    Andrea works at the intersection of sport, tech, and the future.
-  </p>
-  <form id="signup-form" action="https://formspree.io/f/mvzwywlp" method="POST">
-    <input type="text" name="name" id="name" placeholder="your name (optional)" autocomplete="name">
-    <input type="email" name="email" id="email" placeholder="you@example.com" required autocomplete="email">
-    <input type="hidden" name="_subject" value="New subscriber — THE LOCALMAXIMA">
-    <button type="submit" id="submit-btn">Subscribe →</button>
-    <p class="fine">Weekly. Every Friday. Unsubscribe any time.</p>
-  </form>
-  <hr class="divider">
-  <p class="footer">THE LOCALMAXIMA &nbsp; by <a href="https://x.com/pragmatikoo" style="color:var(--muted);text-decoration:underline;">@pragmatikoo</a> and <a href="https://x.com/restrepo_t79952" style="color:var(--muted);text-decoration:underline;">@restrepo_t79952</a></p>
+<div class="page">
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Local Maxima home">
+        <img class="brand-mark" src="noos-logo.jpg" alt="">
+        <span>Local Maxima</span>
+      </a>
+      <div class="nav-links">
+        <a href="#experiments">Experiments</a>
+        <a href="#notes">Build Notes</a>
+        <a href="#signals">Signals</a>
+        <a href="#subscribe">Subscribe</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top" class="shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <div class="eyebrow">Agentic technology / public lab / no AI slop</div>
+        <h1 id="hero-title">From idea to artifact.</h1>
+        <p class="hero-copy">
+          <strong>Local Maxima</strong> is Andrea's public lab for AI-native experiments: agents, creative workflows, future interfaces, and the build notes that prove what actually happened.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#experiments">View current experiment</a>
+          <a class="btn secondary" href="#subscribe">Get field notes</a>
+        </div>
+      </div>
+
+      <aside class="panel" aria-label="Local Maxima current system status">
+        <div class="console-top">
+          <span>LMX / RUN-0001</span>
+          <span class="status"><span class="dot"></span> Building</span>
+        </div>
+        <div class="console-body">
+          <div class="trace-line">
+            <div class="trace-key">Identity</div>
+            <div class="trace-value">Andrea / Dre — agentic technologist.</div>
+          </div>
+          <div class="trace-line">
+            <div class="trace-key">Method</div>
+            <div class="trace-value">Build in public. Show the receipts. Extract the pattern.</div>
+          </div>
+          <div class="trace-line">
+            <div class="trace-key">Signal</div>
+            <div class="trace-value">Useful weirdness over AI-news oatmeal.</div>
+          </div>
+          <div class="meter" aria-label="Current experiment progress"><span></span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="experiments" aria-labelledby="experiments-title">
+      <div class="section-head">
+        <div>
+          <div class="section-label">Current experiment</div>
+          <h2 id="experiments-title">Small systems that reveal the future before it gets productized.</h2>
+        </div>
+        <p class="section-note">Each experiment gets a thesis, a build, a demo, a failure log, and one pattern worth stealing.</p>
+      </div>
+
+      <div class="grid two">
+        <article class="card feature">
+          <div class="chip">Building</div>
+          <h3>Idea → Artifact Agent</h3>
+          <p>A voice-note-to-project machine: capture a messy idea, let agents decompose it, produce a plan, generate assets, and ship a small artifact with receipts.</p>
+          <div class="receipt" aria-label="Experiment receipt">
+            <div><span>Input</span><span>voice note / Telegram</span></div>
+            <div><span>Agents</span><span>planner · builder · critic</span></div>
+            <div><span>Artifact</span><span>demo + build note + video</span></div>
+            <div><span>Lesson</span><span>the hard part is handoff quality</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="chip">Next</div>
+          <h3>Agentic Content Studio</h3>
+          <p>Turn build sessions into scripts, clips, posts, and a newsletter without sanding off the strange useful parts.</p>
+          <div class="meta"><span>VIDEO PIPELINE</span><span>HIGGSFIELD</span><span>FIELD NOTES</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="notes" aria-labelledby="notes-title">
+      <div class="section-head">
+        <div>
+          <div class="section-label">Build notes</div>
+          <h2 id="notes-title">Receipts beat claims.</h2>
+        </div>
+        <p class="section-note">The goal is not to announce expertise. The goal is to leave behind working artifacts and clean explanations.</p>
+      </div>
+
+      <div class="grid three">
+        <article class="card">
+          <div class="chip">Pattern</div>
+          <h3>Design systems for agents</h3>
+          <p>DESIGN.md acts like AGENTS.md for UI: tokens, components, constraints, and taste that agents must follow explicitly.</p>
+          <div class="meta"><span>UI</span><span>DESIGN.MD</span></div>
+        </article>
+        <article class="card">
+          <div class="chip">Autopsy</div>
+          <h3>Where the agent got weird</h3>
+          <p>Failure logs are not embarrassing. They are the interesting part wearing a bad hat.</p>
+          <div class="meta"><span>TRACE</span><span>DEBUG</span></div>
+        </article>
+        <article class="card">
+          <div class="chip">Demo</div>
+          <h3>Artifact-first storytelling</h3>
+          <p>Start with the thing working. Then explain the system, the miss, and the pattern.</p>
+          <div class="meta"><span>VIDEO</span><span>BUILD IN PUBLIC</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="signals" aria-labelledby="signals-title">
+      <div class="section-head">
+        <div>
+          <div class="section-label">Signal feed</div>
+          <h2 id="signals-title">Curated AI signal, with the slop strained out.</h2>
+        </div>
+        <p class="section-note">Not a news dump. A weekly map of what seems load-bearing for builders.</p>
+      </div>
+
+      <div class="signals">
+        <article class="signal">
+          <time datetime="2026-05-27">Field note</time>
+          <div>
+            <strong>Agents need design context as active memory.</strong>
+            <p>If a prompt does not name the design system, the model will quietly reinvent one. Rude little intern behavior.</p>
+          </div>
+        </article>
+        <article class="signal">
+          <time datetime="2026-05-27">UI pattern</time>
+          <div>
+            <strong>Agent observability is becoming a design language.</strong>
+            <p>Runs, traces, costs, alerts, decisions, and timelines are becoming the native interface for agentic work.</p>
+          </div>
+        </article>
+        <article class="signal">
+          <time datetime="2026-05-27">Positioning</time>
+          <div>
+            <strong>Agentic technologist beats AI expert.</strong>
+            <p>Expertise is demonstrated through working systems, not a LinkedIn title wearing cologne.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="subscribe" aria-labelledby="subscribe-title">
+      <div class="subscribe">
+        <div>
+          <div class="section-label">Weekly dispatch</div>
+          <h2 id="subscribe-title">Field notes from the agentic frontier.</h2>
+          <p class="section-note">Experiments, demos, build receipts, and high-signal AI notes. No slop. No ceremonial thought leadership. The bar is underground, but we are not.</p>
+        </div>
+        <form id="signup-form" action="https://formspree.io/f/mvzwywlp" method="POST">
+          <div class="form-row">
+            <input type="text" name="name" id="name" placeholder="your name (optional)" autocomplete="name">
+            <input type="email" name="email" id="email" placeholder="you@example.com" required autocomplete="email">
+            <input type="hidden" name="_subject" value="New subscriber — Local Maxima">
+            <button type="submit" id="submit-btn">Subscribe</button>
+          </div>
+          <p class="fine">Weekly. Unsubscribe any time. Your inbox remains a sacred tiny rectangle.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <span>LOCAL MAXIMA / FROM IDEA TO ARTIFACT</span>
+    <span>by <a href="https://x.com/pragmatikoo">@pragmatikoo</a> · lab notes, demos, and useful weirdness</span>
+  </footer>
 </div>
 <script>
-document.getElementById('signup-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  var btn = document.getElementById('submit-btn');
-  btn.textContent = 'Subscribing...';
-  btn.disabled = true;
-  var data = new FormData(this);
-  try {
-    var resp = await fetch('https://formspree.io/f/mvzwywlp', {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (resp.ok) {
-      document.querySelector('.wrap').innerHTML = '<div class="success"><div class="check">✓</div><h2>YOU\'RE IN</h2><p>THE LOCALMAXIMA lands Friday morning.</p></div>';
-    } else {
-      btn.textContent = 'Try again';
+var form = document.getElementById('signup-form');
+if (form) {
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('submit-btn');
+    btn.textContent = 'Subscribing...';
+    btn.disabled = true;
+    var data = new FormData(this);
+    try {
+      var resp = await fetch('https://formspree.io/f/mvzwywlp', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (resp.ok) {
+        form.innerHTML = '<div class="success"><h3>You are in.</h3><p>Local Maxima lands with build receipts and field notes. Friday-ish, because reality has scheduling opinions.</p></div>';
+      } else {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
+    } catch(err) {
+      btn.textContent = 'Subscribe';
       btn.disabled = false;
     }
-  } catch(err) {
-    btn.textContent = 'Subscribe →';
-    btn.disabled = false;
-  }
-});
+  });
+}
 </script>
 </body>
 </html>
