@@ -1,6 +1,7 @@
-const manifesto = 'Build in public. Keep the receipt. Desire becomes system. Taste is compression. Agents need boundaries. The work is the workshop. Make the thought real. No fog machines. No fake autonomy. The human approves the irreversible step.';
+const manifesto = 'Build in public. Keep the receipt. Desire becomes system. Taste is compression. Agents need boundaries. The work is the workshop. Make the thought real. No fake autonomy. Feedback becomes revision. The human approves the irreversible step.';
 const STORAGE_KEY = 'nous.desireProtocol.v1';
 const INTENT_KEY = 'nous.purchaseIntent.v1';
+const FEEDBACK_KEY = 'nous.desireProtocol.feedback.v1';
 
 function writeBackdrop() {
   const node = document.querySelector('[data-backdrop]');
@@ -155,5 +156,32 @@ function initDesireProtocol() {
   updateTotal();
 }
 
+function initFeedbackReceipt() {
+  const form = document.querySelector('[data-feedback-form]');
+  if (!form) return;
+
+  const textarea = form.elements.feedback;
+  const state = document.querySelector('[data-feedback-state]');
+  const saved = localStorage.getItem(FEEDBACK_KEY);
+
+  if (saved) {
+    textarea.value = saved;
+    if (state) state.textContent = 'Loaded local feedback receipt from this browser.';
+  }
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    localStorage.setItem(FEEDBACK_KEY, textarea.value.trim());
+    if (state) state.textContent = 'Saved locally. Paste this note into chat when Andrea wants Nous to revise the page.';
+  });
+
+  document.querySelector('[data-feedback-clear]')?.addEventListener('click', () => {
+    localStorage.removeItem(FEEDBACK_KEY);
+    textarea.value = '';
+    if (state) state.textContent = 'Cleared local scratchpad. The durable receipt remains the page iteration log.';
+  });
+}
+
 writeBackdrop();
 initDesireProtocol();
+initFeedbackReceipt();

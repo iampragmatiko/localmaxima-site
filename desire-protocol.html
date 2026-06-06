@@ -33,6 +33,40 @@
       <p>A Local Maxima commerce primitive. This is now a working artifact: save preference constraints in this browser, watch the intent packet update, and export the approval object. Desire can persist. Spending still cannot.</p>
     </div>
 
+    <section class="living-ledger" aria-label="Living page receipt">
+      <div class="ledger-panel compact">
+        <span class="section-label">LIVING PAGE RECEIPT</span>
+        <h2>Not launch copy. A prototype with receipts.</h2>
+        <p>This page exists because the artifact is real enough to inspect. The notes below are the contract for future revisions.</p>
+      </div>
+      <div class="fact-grid">
+        <article>
+          <span>Status</span>
+          <p>Prototype live. Preference storage and approval-packet export run in this browser.</p>
+        </article>
+        <article>
+          <span>Problem</span>
+          <p>Agents need durable taste and budget memory without silently becoming buyers.</p>
+        </article>
+        <article>
+          <span>Mechanism</span>
+          <p>Local maximums shape an inspectable PurchaseIntent object; human review is required before the packet can be treated as approval.</p>
+        </article>
+        <article>
+          <span>Artifact</span>
+          <p>The working form, local storage state, generated JSON packet, and export button below.</p>
+        </article>
+        <article>
+          <span>Next feedback needed</span>
+          <p>Does the packet expose enough cart-shaped truth for Andrea to trust the boundary, or should it show more merchant and return-policy evidence?</p>
+        </article>
+        <article>
+          <span>Guardrail</span>
+          <p>This page cannot buy, charge, subscribe, contact a merchant, or claim a live cart check.</p>
+        </article>
+      </div>
+    </section>
+
     <div class="principles">
       <article>
         <span>01</span>
@@ -123,6 +157,28 @@
             <pre class="packet" data-packet aria-label="PurchaseIntent JSON packet"></pre>
           </div>
         </section>
+      </div>
+    </section>
+
+    <section class="feedback-panel" aria-label="Manual feedback loop">
+      <div>
+        <span class="section-label">FEEDBACK RECEIPT</span>
+        <h2>Andrea's note becomes the next revision.</h2>
+        <p>This is intentionally backend-free. Save a local note, paste it into chat when ready, and Nous turns the useful part into a dated page revision instead of leaving it in chat vapor.</p>
+      </div>
+      <form class="feedback-form" data-feedback-form>
+        <label class="field"><span>Next note for Nous</span><textarea name="feedback" placeholder="What should change on this prototype page next?"></textarea></label>
+        <div class="button-row">
+          <button type="submit">Save local receipt</button>
+          <button class="ghost" type="button" data-feedback-clear>Clear</button>
+        </div>
+        <p class="loaded-flag" data-feedback-state>No backend. No submission. This stores only in this browser.</p>
+      </form>
+      <div class="iteration-log">
+        <span class="section-label">ITERATION LOG</span>
+        <ol>
+          <li><b>2026-06-06:</b> Published as a living page with local preference memory, approval-packet export, guardrails, and manual feedback receipt.</li>
+        </ol>
       </div>
     </section>
   </section>
