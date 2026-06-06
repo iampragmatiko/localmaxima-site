@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desire Protocol — NOUS Workshop</title>
+<meta name="description" content="Desire Protocol is a Local Maxima commerce primitive by NOUS: desire can persist, spending cannot.">
+<meta property="og:title" content="Desire Protocol — NOUS Workshop">
+<meta property="og:description" content="Preference becomes intent. Intent waits for approval.">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#050505">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/nous-workshop.css">
+</head>
+<body>
+<main>
+  <div class="backdrop" data-backdrop aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="wordmark" href="index.html">NOUS</a>
+    <nav aria-label="Primary navigation">
+      <a href="index.html">Workshop</a>
+      <a href="projects.html">Projects</a>
+      <a class="active" href="desire-protocol.html">Project 01</a>
+      <a href="https://pragmatiko.me">Pragmatiko</a>
+    </nav>
+  </header>
+
+  <section class="project-page">
+    <a class="back-button" href="index.html">← Back to workshop</a>
+    <div class="project-hero">
+      <span class="section-label">IDEA 01</span>
+      <h1>DESIRE<br>PROTOCOL</h1>
+      <p>A Local Maxima commerce primitive. The agent learns the shape of your want, then protects it from the market's little scams: wrong sizes, bad returns, surprise fees, substitutions, and checkout drift.</p>
+    </div>
+
+    <div class="principles">
+      <article>
+        <span>01</span>
+        <h3>Desire persists.</h3>
+        <p>Your taste, size, budget, and hard stops should not reset every session. Memory is useful when it has edges.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Spend does not.</h3>
+        <p>Remembering what you like is not permission to buy it. That boundary is the product.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>Intent becomes inspectable.</h3>
+        <p>The agent must show the exact cart-shaped truth before money enters the room with its stupid little hat.</p>
+      </article>
+    </div>
+
+    <section class="proto-frame" aria-label="Desire Protocol prototype">
+      <div class="proto-header">
+        <div>
+          <span class="section-label">LIVE PROTOTYPE</span>
+          <h2>Preference becomes intent. Intent waits for approval.</h2>
+        </div>
+        <div class="save-state" data-save-state>DRAFT</div>
+      </div>
+
+      <div class="proto-grid">
+        <form class="constitution-box" data-proto-form>
+          <h3>Your maximums</h3>
+          <p class="quiet">This is not a shopping profile. It is a boundary object. The agent can use it to reject nonsense before it reaches you.</p>
+          <label class="field"><span>Sizes</span><input name="sizes" value="Women 8 / Men 6.5 · apparel S/XS"></label>
+          <label class="field"><span>Taste</span><input name="taste" value="silver, bone, barely green, black, red accents · weird-good, not mall sludge"></label>
+          <label class="field"><span>Max sneaker spend</span><input name="budget" type="number" value="275"></label>
+          <label class="field"><span>Shipping rule</span><input name="shipping" value="Standard or free only. Stop for rush fees."></label>
+          <label class="field"><span>Returns</span><input name="returns" value="Stop for final sale unless explicitly approved. Prefer 30+ day returns."></label>
+          <label class="field"><span>Hard stops</span><textarea name="hardStops">Wrong size, changed merchant, warranty upsell, subscription, address mismatch, total above ceiling, final sale surprise</textarea></label>
+          <div class="button-row">
+            <button type="submit">Save maximums</button>
+            <button class="ghost" type="button" data-reset>Reset</button>
+          </div>
+        </form>
+
+        <section class="intent-box">
+          <div class="intent-top">
+            <div>
+              <span class="section-label">PURCHASE INTENT</span>
+              <h3>Nike · Vomero Premium</h3>
+            </div>
+            <span aria-hidden="true">🔒</span>
+          </div>
+
+          <div class="receipt">
+            <div><span>Style</span><b>HQ2050-300</b></div>
+            <div><span>Variant</span><b>Barely Green / Black / Metallic Silver</b></div>
+            <div><span>Size</span><b>W8 / M6.5</b></div>
+            <div><span>Stock</span><b>Available signal · cart still unverified</b></div>
+            <div><span>Return rule</span><b>Standard return window · not final sale</b></div>
+            <div><span>Checked</span><b>2026-06-06 · 10:22 PT</b></div>
+          </div>
+
+          <div class="total-strip">
+            <div>
+              <span>Estimated total</span>
+              <strong data-total>$246.15</strong>
+              <small>Item $220.00 · shipping $8.00 · tax $18.15</small>
+            </div>
+            <div class="verdict pass" data-verdict>✓ Under max</div>
+          </div>
+
+          <div class="lock-box">
+            <h4>Why payment is locked</h4>
+            <ul>
+              <li>Current cart approval missing</li>
+              <li>Live cart diff not performed</li>
+              <li>Payment rail is a demo stub</li>
+            </ul>
+            <button disabled>Approve this exact cart</button>
+          </div>
+        </section>
+      </div>
+    </section>
+  </section>
+
+  <footer>
+    <span>NOUS · Desire Protocol</span>
+    <span>Local Maxima · preference becomes intent</span>
+  </footer>
+</main>
+<script src="assets/nous-workshop.js"></script>
+</body>
+</html>
