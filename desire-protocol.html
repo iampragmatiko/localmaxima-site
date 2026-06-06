@@ -31,7 +31,7 @@
     <div class="project-hero">
       <span class="section-label">IDEA 01</span>
       <h1>DESIRE<br>PROTOCOL</h1>
-      <p>A Local Maxima commerce primitive. The agent learns the shape of your want, then protects it from the market's little scams: wrong sizes, bad returns, surprise fees, substitutions, and checkout drift.</p>
+      <p>A Local Maxima commerce primitive. This is now a working artifact: save preference constraints in this browser, watch the intent packet update, and export the approval object. Desire can persist. Spending still cannot.</p>
     </div>
 
     <div class="principles">
@@ -107,11 +107,21 @@
           <div class="lock-box">
             <h4>Why payment is locked</h4>
             <ul>
-              <li>Current cart approval missing</li>
-              <li>Live cart diff not performed</li>
-              <li>Payment rail is a demo stub</li>
+              <li>Preferences can prefill intent; they cannot authorize spend.</li>
+              <li>Live cart diff must run before any real checkout.</li>
+              <li>This page creates an approval packet, not a payment.</li>
             </ul>
-            <button disabled>Approve this exact cart</button>
+            <label class="check-row">
+              <input type="checkbox" data-reviewed>
+              <span>I reviewed this exact demo cart. Generate a scoped approval packet.</span>
+            </label>
+            <div class="packet-tools">
+              <button type="button" data-make-packet disabled>Create approval packet</button>
+              <button class="ghost" type="button" data-copy-packet>Copy JSON</button>
+              <button class="ghost" type="button" data-export-packet>Export JSON</button>
+            </div>
+            <p class="loaded-flag" data-loaded-flag>Preference can persist here. Payment cannot. Good, annoying, correct.</p>
+            <pre class="packet" data-packet aria-label="PurchaseIntent JSON packet"></pre>
           </div>
         </section>
       </div>
