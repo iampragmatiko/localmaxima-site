@@ -6,7 +6,7 @@
 <title>Desire Protocol — NOUS Workshop</title>
 <meta name="description" content="Desire Protocol is a Local Maxima commerce primitive by NOUS: desire can persist, spending cannot.">
 <meta property="og:title" content="Desire Protocol — NOUS Workshop">
-<meta property="og:description" content="Preference becomes intent. Intent waits for approval.">
+<meta property="og:description" content="A product page becomes intent. Intent waits for approval.">
 <meta property="og:type" content="article">
 <meta name="theme-color" content="#050505">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,9 +29,9 @@
   <section class="project-page">
     <a class="back-button" href="projects.html">← Back to projects</a>
     <div class="project-hero">
-      <span class="section-label">IDEA 01</span>
+      <span class="section-label">PROJECT 01</span>
       <h1>DESIRE<br>PROTOCOL</h1>
-      <p>A Local Maxima commerce primitive. This is now a working artifact: save preference constraints in this browser, watch the intent packet update, and export the approval object. Desire can persist. Spending still cannot.</p>
+      <p>A Local Maxima commerce primitive. This is now a working artifact: paste a product-page snippet, let the browser extract a cart-shaped intent, save preference constraints, and export the approval object. Desire can persist. Spending still cannot.</p>
     </div>
 
     <section class="living-ledger" aria-label="Living page receipt">
@@ -43,7 +43,7 @@
       <div class="fact-grid">
         <article>
           <span>Status</span>
-          <p>Prototype live. Preference storage and approval-packet export run in this browser.</p>
+          <p>Prototype live. Product text parsing, preference storage, budget checks, approval locks, and packet export run in this browser.</p>
         </article>
         <article>
           <span>Problem</span>
@@ -55,7 +55,7 @@
         </article>
         <article>
           <span>Artifact</span>
-          <p>The working form, local storage state, generated JSON packet, and export button below.</p>
+          <p>The working product parser, preference form, local storage state, generated JSON packet, and export button below.</p>
         </article>
         <article>
           <span>Next feedback needed</span>
@@ -90,50 +90,71 @@
       <div class="proto-header">
         <div>
           <span class="section-label">LIVE PROTOTYPE</span>
-          <h2>Preference becomes intent. Intent waits for approval.</h2>
+          <h2>A product page becomes intent. Intent waits for approval.</h2>
         </div>
         <div class="save-state" data-save-state>DRAFT</div>
       </div>
 
       <div class="proto-grid">
-        <form class="constitution-box" data-proto-form>
-          <h3>Your maximums</h3>
-          <p class="quiet">This is not a shopping profile. It is a boundary object. The agent can use it to reject nonsense before it reaches you.</p>
-          <label class="field"><span>Sizes</span><input name="sizes" value="Women 8 / Men 6.5 · apparel S/XS"></label>
-          <label class="field"><span>Taste</span><input name="taste" value="silver, bone, barely green, black, red accents · weird-good, not mall sludge"></label>
-          <label class="field"><span>Max sneaker spend</span><input name="budget" type="number" value="275"></label>
-          <label class="field"><span>Shipping rule</span><input name="shipping" value="Standard or free only. Stop for rush fees."></label>
-          <label class="field"><span>Returns</span><input name="returns" value="Stop for final sale unless explicitly approved. Prefer 30+ day returns."></label>
-          <label class="field"><span>Hard stops</span><textarea name="hardStops">Wrong size, changed merchant, warranty upsell, subscription, address mismatch, total above ceiling, final sale surprise</textarea></label>
-          <div class="button-row">
-            <button type="submit">Save maximums</button>
-            <button class="ghost" type="button" data-reset>Reset</button>
-          </div>
-        </form>
+        <div class="proto-stack">
+          <section class="product-scraper" aria-label="Product page parser">
+            <h3>Product page intake</h3>
+            <p class="quiet">Paste rough product-page text. The prototype extracts the cart-shaped facts and runs them against your maximums. No network. No checkout. Just the boundary object.</p>
+            <label class="field"><span>Product-page text</span><textarea data-product-source>Nike Vomero Premium
+Style HQ2050-300
+Barely Green / Black / Metallic Silver
+Women 8 / Men 6.5
+Price $220.00
+Shipping $8.00
+Estimated tax $18.15
+Standard 30 day returns. Not final sale.
+https://www.nike.com/t/vomero-premium</textarea></label>
+            <div class="button-row">
+              <button type="button" data-parse-product>Parse page text</button>
+              <button class="ghost" type="button" data-risk-demo>Load bad-cart demo</button>
+            </div>
+            <div class="parse-result" data-parse-result>Parser ready. Paste product text or try the bad-cart demo.</div>
+          </section>
+
+          <form class="constitution-box" data-proto-form>
+            <h3>Your maximums</h3>
+            <p class="quiet">This is not a shopping profile. It is a boundary object. The agent can use it to reject nonsense before it reaches you.</p>
+            <label class="field"><span>Sizes</span><input name="sizes" value="Women 8 / Men 6.5 · apparel S/XS"></label>
+            <label class="field"><span>Taste</span><input name="taste" value="silver, bone, barely green, black, red accents · weird-good, not mall sludge"></label>
+            <label class="field"><span>Max sneaker spend</span><input name="budget" type="number" value="275"></label>
+            <label class="field"><span>Shipping rule</span><input name="shipping" value="Standard or free only. Stop for rush fees."></label>
+            <label class="field"><span>Returns</span><input name="returns" value="Stop for final sale unless explicitly approved. Prefer 30+ day returns."></label>
+            <label class="field"><span>Hard stops</span><textarea name="hardStops">Wrong size, changed merchant, warranty upsell, subscription, address mismatch, total above ceiling, final sale surprise</textarea></label>
+            <div class="button-row">
+              <button type="submit">Save maximums</button>
+              <button class="ghost" type="button" data-reset>Reset</button>
+            </div>
+          </form>
+        </div>
 
         <section class="intent-box">
           <div class="intent-top">
             <div>
               <span class="section-label">PURCHASE INTENT</span>
-              <h3>Nike · Vomero Premium</h3>
+              <h3 data-item-title>Nike · Vomero Premium</h3>
             </div>
             <span aria-hidden="true">🔒</span>
           </div>
 
           <div class="receipt">
-            <div><span>Style</span><b>HQ2050-300</b></div>
-            <div><span>Variant</span><b>Barely Green / Black / Metallic Silver</b></div>
-            <div><span>Size</span><b>W8 / M6.5</b></div>
-            <div><span>Stock</span><b>Available signal · cart still unverified</b></div>
-            <div><span>Return rule</span><b>Standard return window · not final sale</b></div>
-            <div><span>Checked</span><b>2026-06-06 · 10:22 PT</b></div>
+            <div><span>Style</span><b data-style>HQ2050-300</b></div>
+            <div><span>Variant</span><b data-variant>Barely Green / Black / Metallic Silver</b></div>
+            <div><span>Size</span><b data-size>W8 / M6.5</b></div>
+            <div><span>Stock</span><b data-stock>Parsed from page text · cart still unverified</b></div>
+            <div><span>Return rule</span><b data-returns>Standard return window · not final sale</b></div>
+            <div><span>Checked</span><b data-checked>Browser local parse</b></div>
           </div>
 
           <div class="total-strip">
             <div>
               <span>Estimated total</span>
               <strong data-total>$246.15</strong>
-              <small>Item $220.00 · shipping $8.00 · tax $18.15</small>
+              <small data-breakdown>Item $220.00 · shipping $8.00 · tax $18.15</small>
             </div>
             <div class="verdict pass" data-verdict>✓ Under max</div>
           </div>
@@ -179,6 +200,7 @@
         <span class="section-label">ITERATION LOG</span>
         <ol>
           <li><b>2026-06-06:</b> Published as a living page with local preference memory, approval-packet export, guardrails, and manual feedback receipt.</li>
+          <li><b>2026-06-06:</b> Revised from text-heavy page into a product-page parser prototype: paste product copy, extract cart facts, test the boundary, then create the packet.</li>
         </ol>
       </div>
     </section>

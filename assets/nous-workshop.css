@@ -78,8 +78,9 @@ h2 { margin: 7px 0 0; max-width: 820px; font-size: clamp(30px, 5vw, 68px); line-
 .save-state { border: 1px solid var(--line); padding: 8px 10px; color: #bdbdbd; }
 .save-state.saved { color: #050505; background: white; }
 .proto-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 20px; }
-.constitution-box, .intent-box { border: 1px solid var(--line); background: rgba(255,255,255,.025); padding: 18px; }
-.constitution-box h3, .intent-box h3 { margin-top: 0; }
+.proto-stack { display: flex; flex-direction: column; gap: 20px; }
+.constitution-box, .intent-box, .product-scraper { border: 1px solid var(--line); background: rgba(255,255,255,.025); padding: 18px; }
+.constitution-box h3, .intent-box h3, .product-scraper h3 { margin-top: 0; }
 .field { display: flex; flex-direction: column; gap: 7px; margin-top: 14px; }
 .field span, .receipt span, .total-strip span { color: var(--muted); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .09em; }
 input, textarea { width: 100%; border: 1px solid var(--line); background: rgba(0,0,0,.62); color: white; padding: 12px 11px; outline: none; border-radius: 0; }
@@ -108,7 +109,8 @@ textarea { min-height: 88px; resize: vertical; line-height: 1.45; }
 .packet-tools .ghost { background: transparent; color: white; border-color: var(--line); }
 .lock-box button:disabled, .packet-tools button:disabled { opacity: .42; cursor: not-allowed; }
 .packet { max-height: 300px; overflow: auto; border: 1px solid rgba(255,255,255,.18); background: #050505; padding: 14px; color: rgba(255,255,255,.82); font-size: 11px; line-height: 1.55; white-space: pre-wrap; }
-.loaded-flag { color: var(--muted); margin-top: 12px; font-size: 12px; line-height: 1.45; }
+.loaded-flag, .parse-result { color: var(--muted); margin-top: 12px; font-size: 12px; line-height: 1.45; }
+.parse-result { border: 1px solid rgba(255,255,255,.16); background: rgba(0,0,0,.45); padding: 12px; color: rgba(255,255,255,.72); }
 .feedback-panel { display: grid; grid-template-columns: .9fr 1.1fr; gap: 20px; }
 .feedback-panel > div:first-child { align-self: start; }
 .feedback-form textarea { min-height: 150px; }
