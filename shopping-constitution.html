@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shopping Constitution — NOUS Workshop</title>
+<meta name="description" content="Shopping Constitution is a working Local Maxima prototype: product-page text becomes an inspectable approval packet.">
+<meta property="og:title" content="Shopping Constitution — NOUS Workshop">
+<meta property="og:description" content="A product page becomes intent. Intent waits for approval.">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#050505">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/nous-workshop.css">
+</head>
+<body>
+<main>
+  <div class="backdrop" data-backdrop aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="wordmark" href="index.html">LOCAL MAXIMA</a>
+    <nav aria-label="Primary navigation">
+      <a href="index.html">Workshop</a>
+      <a href="process.html">Process</a>
+      <a class="active" href="projects.html">Projects</a>
+      <a href="https://pragmatiko.me">Pragmatiko</a>
+    </nav>
+  </header>
+
+  <section class="project-page">
+    <a class="back-button" href="projects.html">← Back to projects</a>
+    <div class="project-hero">
+      <span class="section-label">PROJECT 01</span>
+      <h1>SHOPPING<br>CONSTITUTION</h1>
+      <p>A working prototype for agentic shopping boundaries. Paste product-page text, let the browser extract cart-shaped facts, test them against saved constraints, and export the approval packet. Preferences can persist. Spending still cannot.</p>
+    </div>
+
+    <section class="living-ledger" aria-label="Living page receipt">
+      <div class="ledger-panel compact">
+        <span class="section-label">LIVING PAGE RECEIPT</span>
+        <h2>Not launch copy. A prototype with receipts.</h2>
+        <p>This page exists because the artifact is real enough to inspect. The notes below are the contract for future revisions.</p>
+      </div>
+      <div class="fact-grid">
+        <article>
+          <span>Status</span>
+          <p>Prototype live. Product text parsing, preference storage, budget checks, approval locks, and packet export run in this browser.</p>
+        </article>
+        <article>
+          <span>Problem</span>
+          <p>Agents need durable taste and budget memory without silently becoming buyers.</p>
+        </article>
+        <article>
+          <span>Mechanism</span>
+          <p>Local maximums shape an inspectable PurchaseIntent object; human review is required before the packet can be treated as approval.</p>
+        </article>
+        <article>
+          <span>Artifact</span>
+          <p>The working product parser, preference form, local storage state, generated JSON packet, and export button below.</p>
+        </article>
+        <article>
+          <span>Next feedback needed</span>
+          <p>Does the packet expose enough cart-shaped truth for Andrea to trust the boundary, or should it show more merchant and return-policy evidence?</p>
+        </article>
+        <article>
+          <span>Guardrail</span>
+          <p>This page cannot buy, charge, subscribe, contact a merchant, or claim a live cart check.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="principles">
+      <article>
+        <span>01</span>
+        <h3>Preferences persist.</h3>
+        <p>Your size, taste, budget, return policy, and hard stops should not reset every session. Memory is useful only when it has edges.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Spend does not.</h3>
+        <p>Remembering what you like is not permission to buy it. That boundary is the prototype.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>The cart becomes inspectable.</h3>
+        <p>The agent must show parsed cart facts and risk flags before any irreversible action.</p>
+      </article>
+    </div>
+
+    <section class="proto-frame" aria-label="Shopping Constitution prototype">
+      <div class="proto-header">
+        <div>
+          <span class="section-label">LIVE PROTOTYPE</span>
+          <h2>A product page becomes intent. Intent waits for approval.</h2>
+        </div>
+        <div class="save-state" data-save-state>DRAFT</div>
+      </div>
+
+      <div class="proto-grid">
+        <div class="proto-stack">
+          <section class="product-scraper" aria-label="Product page parser">
+            <h3>Product page intake</h3>
+            <p class="quiet">Paste rough product-page text. The prototype extracts the cart-shaped facts and runs them against your maximums. No network. No checkout. Just the boundary object.</p>
+            <label class="field"><span>Product-page text</span><textarea data-product-source>Nike Vomero Premium
+Style HQ2050-300
+Barely Green / Black / Metallic Silver
+Women 8 / Men 6.5
+Price $220.00
+Shipping $8.00
+Estimated tax $18.15
+Standard 30 day returns. Not final sale.
+https://www.nike.com/t/vomero-premium</textarea></label>
+            <div class="button-row">
+              <button type="button" data-parse-product>Parse page text</button>
+              <button class="ghost" type="button" data-risk-demo>Load bad-cart demo</button>
+            </div>
+            <div class="parse-result" data-parse-result>Parser ready. Paste product text or try the bad-cart demo.</div>
+          </section>
+
+          <form class="constitution-box" data-proto-form>
+            <h3>Your maximums</h3>
+            <p class="quiet">This is not a shopping profile. It is a boundary object. The agent can use it to reject nonsense before it reaches you.</p>
+            <label class="field"><span>Sizes</span><input name="sizes" value="Women 8 / Men 6.5 · apparel S/XS"></label>
+            <label class="field"><span>Taste</span><input name="taste" value="silver, bone, barely green, black, red accents · weird-good, not mall sludge"></label>
+            <label class="field"><span>Max sneaker spend</span><input name="budget" type="number" value="275"></label>
+            <label class="field"><span>Shipping rule</span><input name="shipping" value="Standard or free only. Stop for rush fees."></label>
+            <label class="field"><span>Returns</span><input name="returns" value="Stop for final sale unless explicitly approved. Prefer 30+ day returns."></label>
+            <label class="field"><span>Hard stops</span><textarea name="hardStops">Wrong size, changed merchant, warranty upsell, subscription, address mismatch, total above ceiling, final sale surprise</textarea></label>
+            <div class="button-row">
+              <button type="submit">Save maximums</button>
+              <button class="ghost" type="button" data-reset>Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <section class="intent-box">
+          <div class="intent-top">
+            <div>
+              <span class="section-label">PURCHASE INTENT</span>
+              <h3 data-item-title>Nike · Vomero Premium</h3>
+            </div>
+            <span aria-hidden="true">🔒</span>
+          </div>
+
+          <div class="receipt">
+            <div><span>Style</span><b data-style>HQ2050-300</b></div>
+            <div><span>Variant</span><b data-variant>Barely Green / Black / Metallic Silver</b></div>
+            <div><span>Size</span><b data-size>W8 / M6.5</b></div>
+            <div><span>Stock</span><b data-stock>Parsed from page text · cart still unverified</b></div>
+            <div><span>Return rule</span><b data-returns>Standard return window · not final sale</b></div>
+            <div><span>Checked</span><b data-checked>Browser local parse</b></div>
+          </div>
+
+          <div class="total-strip">
+            <div>
+              <span>Estimated total</span>
+              <strong data-total>$246.15</strong>
+              <small data-breakdown>Item $220.00 · shipping $8.00 · tax $18.15</small>
+            </div>
+            <div class="verdict pass" data-verdict>✓ Under max</div>
+          </div>
+
+          <div class="lock-box">
+            <h4>Why payment is locked</h4>
+            <ul>
+              <li>Preferences can prefill intent; they cannot authorize spend.</li>
+              <li>Live cart diff must run before any real checkout.</li>
+              <li>This page creates an approval packet, not a payment.</li>
+            </ul>
+            <label class="check-row">
+              <input type="checkbox" data-reviewed>
+              <span>I reviewed this exact demo cart. Generate a scoped approval packet.</span>
+            </label>
+            <div class="packet-tools">
+              <button type="button" data-make-packet disabled>Create approval packet</button>
+              <button class="ghost" type="button" data-copy-packet>Copy JSON</button>
+              <button class="ghost" type="button" data-export-packet>Export JSON</button>
+            </div>
+            <p class="loaded-flag" data-loaded-flag>Preference can persist here. Payment cannot. Good, annoying, correct.</p>
+            <pre class="packet" data-packet aria-label="PurchaseIntent JSON packet"></pre>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="feedback-panel" aria-label="Manual feedback loop">
+      <div>
+        <span class="section-label">FEEDBACK RECEIPT</span>
+        <h2>Andrea's note becomes the next revision.</h2>
+        <p>This is intentionally backend-free. Save a local note, paste it into chat when ready, and Nous turns the useful part into a dated page revision instead of leaving it in chat vapor.</p>
+      </div>
+      <form class="feedback-form" data-feedback-form>
+        <label class="field"><span>Next note for Nous</span><textarea name="feedback" placeholder="What should change on this prototype page next?"></textarea></label>
+        <div class="button-row">
+          <button type="submit">Save local receipt</button>
+          <button class="ghost" type="button" data-feedback-clear>Clear</button>
+        </div>
+        <p class="loaded-flag" data-feedback-state>No backend. No submission. This stores only in this browser.</p>
+      </form>
+      <div class="iteration-log">
+        <span class="section-label">ITERATION LOG</span>
+        <ol>
+          <li><b>2026-06-06:</b> Published as a living page with local preference memory, approval-packet export, guardrails, and manual feedback receipt.</li>
+          <li><b>2026-06-06:</b> Renamed the public project from Desire Protocol to Shopping Constitution because Desire Protocol is the instruction set. The project is the working parser and approval packet prototype.</li>
+        </ol>
+      </div>
+    </section>
+  </section>
+
+  <footer>
+    <span>NOUS · Shopping Constitution</span>
+    <span>Local Maxima · shopping constitution</span>
+  </footer>
+</main>
+<script src="assets/nous-workshop.js"></script>
+</body>
+</html>

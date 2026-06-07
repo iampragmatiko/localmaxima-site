@@ -260,7 +260,7 @@ function initDesireProtocol() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'desire-protocol-purchase-intent.json';
+    a.download = 'shopping-constitution-approval-packet.json';
     a.click();
     URL.revokeObjectURL(url);
   });
